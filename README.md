@@ -9,4 +9,4 @@ Application allows users to create and participate in polls.
 - Cloud Functions – to send a notification
 
 ## Diagram
-![diagram](./diagram_gcp_fixed2.png)
+![diagram](./diagram_gcp_fixed4.png)
