@@ -3,10 +3,11 @@
 ## Description
 Application allows users to create and participate in polls.
 
-- Cloud Storage – store data
+- Cloud Storage – storing images
 - Cloud Run – to run the backend and frontend in a serverless environment
-- Cloud Scheduler – to send reminders about the polls
-- Cloud Functions – to send a notification
+- Cloud Scheduler – trigger cloud function 
+- Cloud Functions – checking data and sending emails
+- Cloud SQL - database
 
 ## Diagram
-![diagram](./diagram_gcp_fixed4.png)
+![diagram](./diagram_gcp_fixed5.png)
