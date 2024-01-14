@@ -1,5 +1,6 @@
 import os
 import smtplib
+import requests
 import sqlalchemy
 import logging
 from email.message import EmailMessage
@@ -13,14 +14,20 @@ def check_and_send_email(request):
     request_json = request.get_json()
 
     db_url = f"postgresql://{db_user}:{db_password}@{db_host}/{db_name}"
+
+    url = "https://voting-backend-11-6prvk2lemq-uc.a.run.app:443/api/participants/25"
+    response = requests.get(url)
+
+    record = None
+
+    if response.status_code == 200 and response.content.strip() != b'null':
+        record = {"id": 23}
+    else:
+        logging.warning("ID not found in the response.")
+
     engine = sqlalchemy.create_engine(db_url)
 
     logging.debug("SqlAlchemy engine created")
-    record = None
-    with engine.connect() as connection:
-        query = sqlalchemy.text("SELECT * FROM public.participant WHERE id = 23")
-        result = connection.execute(query)
-        record = result.fetchone()
     message = "Hello, this is a test message."
     msg = EmailMessage()
     subject = 'Notification about survey'
